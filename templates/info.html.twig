@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>RedBox test</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4 text-center">Popular Games</h1>
+        </div>
+    </div>
+
+    <div class="row">
+
+        {% for game in data.games.content %}
+
+            <div class="col-lg-4 col-md-4 col-xs-4 mb-4 thumb">
+                <a class="thumbnail" href="#">
+                    <img class="img-responsive" height="256" width="320" src="{{ game.image }}" alt="{{ game.fullGameName }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4 text-center">Jackpot</h1>
+            <h1 class="display-4 text-center"><p><em>{{ data.jackpot.amount }} {{ data.jackpot.currency }}</em></p></h1>
+            <h1 class="display-4 text-center">Top winners</h1>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Nick</th>
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for winner in data.topWinners %}
+                <tr>
+                <td></td>
+                <td>{{  winner.username }}</td>
+                <td>{{  winner.date|date('Y-m-d H:i') }}</td>
+                <td>{{  winner.winAmount.amount }} {{  winner.winAmount.currency }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
+
